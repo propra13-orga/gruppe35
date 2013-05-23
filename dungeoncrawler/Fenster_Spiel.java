@@ -9,15 +9,15 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /**  
- * Hier wird der Frame für das Spiel erstellt:
- * Festlegung von Variablen für Position des Spielers, Räume
- * Festlegung des Speicherorts für Grafiken usw
+ * Hier wird der Frame fuer das Spiel erstellt:
+ * Festlegung von Variablen fuer Position des Spielers, Raume
+ * Festlegung des Speicherorts fuer Grafiken usw
  * Es wird angegeben, welche Grafiken wo eingebunden werden sollen
- * Ein KeyListener wird eingefügt, der festlegt, welche Taste was bewirkt
- * Festlegung von drei Arrays, die als Räume im Spiel dienen
- * Eigenschaften der Räume
+ * Ein KeyListener wird eingefuet, der festlegt, welche Taste was bewirkt
+ * Festlegung von drei Arrays, die als Raeume im Spiel dienen
+ * Eigenschaften der Raeume
  * Immer, wenn die Spielfigur bewegt wird, wird der Raum neu ausgegeben, um dessen aktuellen Zustand anzuzeigen
- * Wechseln zwischen Räumen
+ * Wechseln zwischen Raeumen
  * Festlegung der Dialogfenster, die bei Sieg oder Niederlage erscheinen	*/
  
 public class Fenster_Spiel extends JFrame implements KeyListener {
@@ -25,16 +25,16 @@ public class Fenster_Spiel extends JFrame implements KeyListener {
 	
 	private static final long serialVersionUID = 1L;
 
-	int spieler_pos_x;													/** Für die X- und Y-Koordinate der Spielfigur, um sie im Array zu finden werden Variabeln erstellt  */
+	int spieler_pos_x;													/** Fï¿½r die X- und Y-Koordinate der Spielfigur, um sie im Array zu finden werden Variabeln erstellt  */
 	int spieler_pos_y;	
 	int[][] raum_jetzt;													/** Jetzt wird der momentane Raum deklariert */
 	int raum;															/** Und ihm eine Variable gegeben */
 
 	static String speicherort = System.getProperty("user.dir");
 	
-	static Icon hintergrund = new ImageIcon(speicherort					/** Hier werden Icons erstellt und ihren Grafiken zugewiesen  */
+	static Icon hintergrund = new ImageIcon(speicherort						/** Hier werden Icons erstellt und ihren Grafiken zugewiesen  */
 			+ "/src/leer.jpg");
-	static Icon mauer = new ImageIcon(speicherort						/** z.B. Mauer wird mauer.jpg zugewiesen + Angabe des Speicherortes von mauer.jpg  */		
+	static Icon mauer = new ImageIcon(speicherort							/** z.B. Mauer wird mauer.jpg zugewiesen + Angabe des Speicherortes von mauer.jpg  */		
 			+ "/src/mauer.jpg");
 	static Icon figur = new ImageIcon(speicherort
 			+ "/src/figur.jpg");
@@ -46,8 +46,8 @@ public class Fenster_Spiel extends JFrame implements KeyListener {
 	public void keyTyped(KeyEvent arg0) {								/** Hier werden die Nutzereingaben bzw. die Steuerung festgelegt. Steuerung durch Pfeiltasten */
 	}																	/** Ist das neue Feld=0 wird das alte von dem der Spieler kommt, mit Wert 0 versehen, die neue mit Wert 2 */
 																		/** Ist das Feld auf das sich die Spielfigur bewegt dank einer Nutzereingabe mit einem Gegner besetzt, also hat den Wert 3, erscheint das "Niederlagen"-Fenster auf dem Bildschirm */			
-																		/** Bei dem Wert=4 erscheint der nächste Level */	
-																		/** Wert=5 steht für das "Sieg"-Fenster */																						
+																		/** Bei dem Wert=4 erscheint der nï¿½chste Level */	
+																		/** Wert=5 steht fï¿½r das "Sieg"-Fenster */																						
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			if (raum_jetzt[spieler_pos_x][spieler_pos_y - 1] == 3) {
@@ -119,7 +119,7 @@ public class Fenster_Spiel extends JFrame implements KeyListener {
 	public void keyReleased(KeyEvent arg0) {
 	}
 	
-	static final int[][][] levels = {									/** Diese Arrays stehen für die, zunächst 3, Räume bzw. Spielfelder  */
+	static final int[][][] levels = {										/** Diese Arrays stehen fï¿½r die, zunï¿½chst 3, Rï¿½ume bzw. Spielfelder  */
 			{ { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }, { 2, 0, 0, 0, 0, 0, 1, 0, 0, 1 },
 					{ 1, 0, 0, 1, 0, 0, 1, 0, 0, 4 }, { 1, 0, 0, 1, 0, 0, 1, 0, 0, 1 },		/** Die einzelnen Werte bedeuten: 0= betretbar 1=Mauer 2=Eingang 3=Gegner */
 					{ 1, 0, 0, 1, 0, 0, 0, 0, 0, 1 }, { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } },
@@ -134,7 +134,7 @@ public class Fenster_Spiel extends JFrame implements KeyListener {
 
 	public JButton beenden;
 	
-	public Fenster_Spiel() {												/** Hier werden die Eigenschaftes des Raumes, z.B. die Auflösung, festgelegt    */
+	public Fenster_Spiel() {											/** Hier werden die Eigenschaftes des Raumes, z.B. die Auflï¿½sung, festgelegt    */
 		addKeyListener(this);
 		this.setResizable(false);
 		this.setTitle("Dungeon Crawler");
@@ -143,17 +143,17 @@ public class Fenster_Spiel extends JFrame implements KeyListener {
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 		this.setLayout(null);
-		raum = -1;														/** Damit das Array das für die Level zuständig ist bei 0 starten kann, wird der Anfangswert auf -1 gelegt  */
+		raum = -1;												/** Damit das Array das fï¿½r die Level zustï¿½ndig ist bei 0 starten kann, wird der Anfangswert auf -1 gelegt  */
 		NextLevel();
 	}
 	
 	public void Levelaufruf(int[][] pos) {
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
-		JLabel[] labels = new JLabel[60];								/** Hier werden 60 Labels, weil 10x6 Felder, für das Array generiert  */								
+		JLabel[] labels = new JLabel[60];									/** Hier werden 60 Labels, weil 10x6 Felder, fï¿½r das Array generiert  */								
 		
-		for (int i = 0; i < pos.length; i++) {							/** Die For-Schleife geht durch das gesamte Array und weißt jeder oben definierten Einzelwert die passende Grafik zu. Also ist ein Feld z.B. =1, bekommt es mauer.jpg zugewiesen */
-			for (int j = 0; j < pos[i].length; j++) {
+		for (int i = 0; i < pos.length; i++) {									/** Die For-Schleife geht durch das gesamte Array und weiï¿½t jeder oben definierten Einzelwert die passende Grafik zu. Also ist ein Feld z.B. =1, bekommt es mauer.jpg zugewiesen */
+			for (int j = 0; j < pos[i].length; j++) {	
 				if (pos[i][j] == 0) {
 					labels[i] = new JLabel(hintergrund);
 					panel.add(labels[i]);
@@ -162,7 +162,7 @@ public class Fenster_Spiel extends JFrame implements KeyListener {
 					labels[i] = new JLabel(mauer);
 					labels[i].setBounds(j * 100, i * 100, 100, 100);								
 					panel.add(labels[i]);
-				} else if (pos[i][j] == 2) {							/** Hier wird z.B. die Position des Spielers festgehalten */
+				} else if (pos[i][j] == 2) {								/** Hier wird z.B. die Position des Spielers festgehalten */
 					spieler_pos_x = i;
 					spieler_pos_y = j;
 					labels[i] = new JLabel(figur);
@@ -177,21 +177,21 @@ public class Fenster_Spiel extends JFrame implements KeyListener {
 					labels[i].setBounds(j * 100, i * 100, 100, 100);
 					panel.add(labels[i]);
 				} else if (pos[i][j] == 5) {
-					labels[i] = new JLabel(ziel);						/** Hier wird z.B. das Ziel festgehalten */
+					labels[i] = new JLabel(ziel);							/** Hier wird z.B. das Ziel festgehalten */
 					labels[i].setBounds(j * 100, i * 100, 100, 100);
 					panel.add(labels[i]);
 				}
-				this.setContentPane(panel);								/** Hier wird der Befehl gegeben das Spielfenster mit Bildern aus dem Panel zu befüllen  */
+				this.setContentPane(panel);								/** Hier wird der Befehl gegeben das Spielfenster mit Bildern aus dem Panel zu befï¿½llen  */
 			}
 		}
 	}
 
-	protected void LevelAktualisieren() {								/** Der Raum wird immer neu gezeichnet nach jeder Bewegung  */
+	protected void LevelAktualisieren() {										/** Der Raum wird immer neu gezeichnet nach jeder Bewegung  */
 		validate();
 		repaint();
 	}
 
-	protected void NextLevel() {										/** NextLevel() gehört zum Java GameFrame und zählt hoch um ins nächste Level gehen zu können  */
+	protected void NextLevel() {											/** NextLevel() gehï¿½rt zum Java GameFrame und zï¿½hlt hoch um ins nï¿½chste Level gehen zu kï¿½nnen  */
 		raum++;
 		int[][] reference = levels[raum];
 		raum_jetzt = new int[reference.length][reference[0].length];
@@ -223,11 +223,11 @@ public class Fenster_Spiel extends JFrame implements KeyListener {
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 
-		beenden = new JButton("Zurück zum Menü");
+		beenden = new JButton("Zurï¿½ck zum Menï¿½");
 		beenden.setBounds(300, 400, 150, 50);
 		this.add(beenden);
 
-		ActionListener fensterzu = new ActionListener() {				/** Hier wird die  Möglichkeit das Fenster mit einem Button zu schließen erstellt  */
+		ActionListener fensterzu = new ActionListener() {							/** Hier wird die  Mï¿½glichkeit das Fenster mit einem Button zu schlieï¿½en erstellt  */
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 			}
@@ -241,7 +241,7 @@ public class Fenster_Spiel extends JFrame implements KeyListener {
 			this.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File(
 					speicherort + "/src/tot.jpg")))));
 		} catch (IOException a) {
-			System.out.println("Hintergrundgrafik fehlt");				/**  Ebenfalls mit einer Meldung für den Fall, dass eine Grafik fehlen sollte*/
+			System.out.println("Hintergrundgrafik fehlt");							/**  Ebenfalls mit einer Meldung fï¿½r den Fall, dass eine Grafik fehlen sollte*/
 		}
 
 		this.setResizable(false);
@@ -251,7 +251,7 @@ public class Fenster_Spiel extends JFrame implements KeyListener {
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 
-		beenden = new JButton("Zurück zum Menü");						/** Wenn das Spielfenster geschlossen wird, muss das Menü Fenster noch da sein. Das geschieht hier */
+		beenden = new JButton("Zurï¿½ck zum Menï¿½");								/** Wenn das Spielfenster geschlossen wird, muss das Menï¿½ Fenster noch da sein. Das geschieht hier */
 		beenden.setBounds(300, 400, 150, 50);
 		this.add(beenden);
 
